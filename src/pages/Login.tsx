@@ -1,30 +1,40 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Apple } from "lucide-react";
+import { Apple, Calendar, CalendarCheck, Ticket, Tickets, Users } from "lucide-react";
 
 const Login = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-rose-900 to-violet-900 relative overflow-hidden flex flex-col">
       {/* Floating Decorative Elements */}
       <div className="absolute top-8 left-6 w-16 h-16 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-80 animate-float">
-        <div className="w-full h-full rounded-full flex items-center justify-center text-2xl">🚀</div>
+        <div className="w-full h-full rounded-full flex items-center justify-center">
+          <Calendar className="w-8 h-8 text-white" />
+        </div>
       </div>
       
       <div className="absolute top-12 right-8 w-14 h-14 rounded-lg bg-gradient-to-r from-yellow-400 to-orange-400 opacity-70 animate-float" style={{ animationDelay: '1s' }}>
-        <div className="w-full h-full rounded-lg flex items-center justify-center text-xl">💳</div>
+        <div className="w-full h-full rounded-lg flex items-center justify-center">
+          <CalendarCheck className="w-6 h-6 text-white" />
+        </div>
       </div>
       
       <div className="absolute bottom-32 left-4 w-12 h-12 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 opacity-60 animate-float" style={{ animationDelay: '2s' }}>
-        <div className="w-full h-full rounded-full flex items-center justify-center text-lg">🎫</div>
+        <div className="w-full h-full rounded-full flex items-center justify-center">
+          <Ticket className="w-5 h-5 text-white" />
+        </div>
       </div>
       
       <div className="absolute bottom-20 right-6 w-18 h-18 rounded-2xl bg-gradient-to-r from-green-400 to-emerald-400 opacity-70 animate-float" style={{ animationDelay: '0.5s' }}>
-        <div className="w-full h-full rounded-2xl flex items-center justify-center text-2xl">🎉</div>
+        <div className="w-full h-full rounded-2xl flex items-center justify-center">
+          <Tickets className="w-8 h-8 text-white" />
+        </div>
       </div>
 
       <div className="absolute top-1/3 right-4 w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-rose-400 opacity-50 animate-float" style={{ animationDelay: '1.5s' }}>
-        <div className="w-full h-full rounded-full flex items-center justify-center text-sm">👛</div>
+        <div className="w-full h-full rounded-full flex items-center justify-center">
+          <Users className="w-4 h-4 text-white" />
+        </div>
       </div>
 
       {/* Main Content */}
