@@ -85,7 +85,7 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
           </p>
           <Button
             variant="outline"
-            className="glass text-foreground border-border hover:bg-accent"
+            className="bg-background text-foreground border-border hover:bg-accent"
             onClick={() => document.getElementById('file-upload')?.click()}
           >
             <Image className="mr-2 h-4 w-4" />
@@ -101,7 +101,7 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
         </div>
       ) : (
         <div className="space-y-4">
-          <div className="relative rounded-lg overflow-hidden glass p-4">
+          <div className="relative rounded-lg overflow-hidden bg-card border border-border p-4">
             <button
               onClick={removeImage}
               className="absolute top-2 right-2 p-1 rounded-full bg-destructive hover:bg-destructive/80 transition-colors"
@@ -121,7 +121,7 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
           <Button
             variant="outline"
             onClick={removeImage}
-            className="glass text-foreground border-border hover:bg-accent w-full"
+            className="bg-background text-foreground border-border hover:bg-accent w-full"
           >
             Upload Different Image
           </Button>
@@ -130,7 +130,7 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
 
       <div className="space-y-4">
         <Label className="text-foreground text-lg">Artwork Guidelines</Label>
-        <div className="glass p-4 rounded-lg space-y-2">
+        <div className="bg-card border border-border p-4 rounded-lg space-y-2">
           <p className="text-muted-foreground text-sm">• Recommended size: 1080x1080px (square format)</p>
           <p className="text-muted-foreground text-sm">• High resolution for best NFT quality</p>
           <p className="text-muted-foreground text-sm">• Avoid text that might be hard to read when resized</p>

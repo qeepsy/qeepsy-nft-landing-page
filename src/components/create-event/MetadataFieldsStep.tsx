@@ -57,20 +57,20 @@ const MetadataFieldsStep: React.FC<MetadataFieldsStepProps> = ({ data, updateDat
   return (
     <div className="space-y-6">
       <div className="text-center space-y-2">
-        <h3 className="text-xl font-semibold text-white">Metadata Fields</h3>
-        <p className="text-white/70">
+        <h3 className="text-xl font-semibold text-foreground">Metadata Fields</h3>
+        <p className="text-muted-foreground">
           Define what information will be stored in each NFT's metadata
         </p>
       </div>
 
-      <Card className="glass border-white/30">
+      <Card className="bg-card border-border">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-white text-lg">Custom Metadata Fields</CardTitle>
+          <CardTitle className="text-foreground text-lg">Custom Metadata Fields</CardTitle>
           <Button
             onClick={addField}
             variant="outline"
             size="sm"
-            className="glass text-white border-white/30 hover:bg-white/20"
+            className="bg-background text-foreground border-border hover:bg-accent"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Field
@@ -78,27 +78,27 @@ const MetadataFieldsStep: React.FC<MetadataFieldsStepProps> = ({ data, updateDat
         </CardHeader>
         <CardContent className="space-y-4">
           {fields.map((field, index) => (
-            <div key={field.id} className="glass p-4 rounded-lg border border-white/20">
+            <div key={field.id} className="bg-background border border-border p-4 rounded-lg">
               <div className="flex items-center gap-4">
-                <GripVertical className="h-5 w-5 text-white/50 cursor-move" />
+                <GripVertical className="h-5 w-5 text-muted-foreground cursor-move" />
                 
                 <div className="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4">
                   <div className="space-y-2">
-                    <Label className="text-white text-sm">Field Name</Label>
+                    <Label className="text-foreground text-sm">Field Name</Label>
                     <Input
                       placeholder="Field name"
                       value={field.name}
                       onChange={(e) => updateField(field.id, { name: e.target.value })}
-                      className="glass border-white/30 text-white placeholder:text-white/50 h-9"
+                      className="bg-background border-border text-foreground h-9"
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label className="text-white text-sm">Type</Label>
+                    <Label className="text-foreground text-sm">Type</Label>
                     <select
                       value={field.type}
                       onChange={(e) => updateField(field.id, { type: e.target.value as any })}
-                      className="w-full h-9 glass border border-white/30 rounded-md px-3 text-white bg-transparent text-sm"
+                      className="w-full h-9 bg-background border border-border rounded-md px-3 text-foreground text-sm"
                     >
                       <option value="text">Text</option>
                       <option value="number">Number</option>
@@ -108,25 +108,25 @@ const MetadataFieldsStep: React.FC<MetadataFieldsStepProps> = ({ data, updateDat
                   </div>
                   
                   <div className="space-y-2">
-                    <Label className="text-white text-sm">Default Value</Label>
+                    <Label className="text-foreground text-sm">Default Value</Label>
                     <Input
                       placeholder="Default value"
                       value={field.defaultValue || ''}
                       onChange={(e) => updateField(field.id, { defaultValue: e.target.value })}
-                      className="glass border-white/30 text-white placeholder:text-white/50 h-9"
+                      className="bg-background border-border text-foreground h-9"
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label className="text-white text-sm">Required</Label>
+                    <Label className="text-foreground text-sm">Required</Label>
                     <div className="flex items-center space-x-2 h-9">
                       <input
                         type="checkbox"
                         checked={field.required}
                         onChange={(e) => updateField(field.id, { required: e.target.checked })}
-                        className="rounded border-white/30"
+                        className="rounded border-border"
                       />
-                      <span className="text-white/70 text-sm">Required</span>
+                      <span className="text-muted-foreground text-sm">Required</span>
                     </div>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ const MetadataFieldsStep: React.FC<MetadataFieldsStepProps> = ({ data, updateDat
                   onClick={() => removeField(field.id)}
                   variant="outline"
                   size="sm"
-                  className="glass text-red-400 border-red-400/30 hover:bg-red-400/20"
+                  className="bg-background text-red-500 border-red-500/30 hover:bg-red-500/20"
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
@@ -145,11 +145,11 @@ const MetadataFieldsStep: React.FC<MetadataFieldsStepProps> = ({ data, updateDat
           
           {fields.length === 0 && (
             <div className="text-center py-8">
-              <p className="text-white/50">No custom fields added yet</p>
+              <p className="text-muted-foreground">No custom fields added yet</p>
               <Button
                 onClick={addField}
                 variant="outline"
-                className="glass text-white border-white/30 hover:bg-white/20 mt-4"
+                className="bg-background text-foreground border-border hover:bg-accent mt-4"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Your First Field
@@ -159,31 +159,31 @@ const MetadataFieldsStep: React.FC<MetadataFieldsStepProps> = ({ data, updateDat
         </CardContent>
       </Card>
 
-      <Card className="glass border-white/30">
+      <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-white text-lg">Standard Fields</CardTitle>
+          <CardTitle className="text-foreground text-lg">Standard Fields</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            <p className="text-white/70 text-sm mb-4">
+            <p className="text-muted-foreground text-sm mb-4">
               These fields are automatically included in every NFT:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="glass p-3 rounded border border-white/10">
-                <span className="text-white font-medium">Event Name</span>
-                <p className="text-white/50 text-sm">Name of the event</p>
+              <div className="bg-background border border-border p-3 rounded">
+                <span className="text-foreground font-medium">Event Name</span>
+                <p className="text-muted-foreground text-sm">Name of the event</p>
               </div>
-              <div className="glass p-3 rounded border border-white/10">
-                <span className="text-white font-medium">Event Date</span>
-                <p className="text-white/50 text-sm">Event start date</p>
+              <div className="bg-background border border-border p-3 rounded">
+                <span className="text-foreground font-medium">Event Date</span>
+                <p className="text-muted-foreground text-sm">Event start date</p>
               </div>
-              <div className="glass p-3 rounded border border-white/10">
-                <span className="text-white font-medium">Token ID</span>
-                <p className="text-white/50 text-sm">Unique NFT identifier</p>
+              <div className="bg-background border border-border p-3 rounded">
+                <span className="text-foreground font-medium">Token ID</span>
+                <p className="text-muted-foreground text-sm">Unique NFT identifier</p>
               </div>
-              <div className="glass p-3 rounded border border-white/10">
-                <span className="text-white font-medium">Mint Date</span>
-                <p className="text-white/50 text-sm">When the NFT was created</p>
+              <div className="bg-background border border-border p-3 rounded">
+                <span className="text-foreground font-medium">Mint Date</span>
+                <p className="text-muted-foreground text-sm">When the NFT was created</p>
               </div>
             </div>
           </div>

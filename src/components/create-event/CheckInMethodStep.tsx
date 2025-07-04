@@ -51,8 +51,8 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
   return (
     <div className="space-y-6">
       <div className="text-center space-y-2">
-        <h3 className="text-xl font-semibold text-white">Check-in Method</h3>
-        <p className="text-white/70">
+        <h3 className="text-xl font-semibold text-foreground">Check-in Method</h3>
+        <p className="text-muted-foreground">
           Choose how attendees will check in to your event
         </p>
       </div>
@@ -67,28 +67,28 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
               key={method.id}
               className={`cursor-pointer transition-all ${
                 isSelected 
-                  ? 'glass-strong border-purple-400/50 ring-2 ring-purple-400/30' 
-                  : 'glass border-white/30 hover:border-white/50'
+                  ? 'bg-card border-primary ring-2 ring-primary/30' 
+                  : 'bg-card border-border hover:border-primary/50'
               }`}
               onClick={() => handleChange('method', method.id)}
             >
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <Icon className="h-6 w-6 text-purple-400" />
-                    <CardTitle className="text-white text-lg">
+                    <Icon className="h-6 w-6 text-primary" />
+                    <CardTitle className="text-foreground text-lg">
                       {method.title}
                     </CardTitle>
                   </div>
                   {method.recommended && (
-                    <span className="text-xs bg-purple-400/20 text-purple-300 px-2 py-1 rounded-full">
+                    <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">
                       Recommended
                     </span>
                   )}
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-white/70 text-sm">{method.description}</p>
+                <p className="text-muted-foreground text-sm">{method.description}</p>
               </CardContent>
             </Card>
           );
@@ -96,9 +96,9 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
       </div>
 
       {data.checkIn?.method && (
-        <Card className="glass border-white/30">
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-white text-lg">Check-in Configuration</CardTitle>
+            <CardTitle className="text-foreground text-lg">Check-in Configuration</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {data.checkIn.method === 'qr-code' && (
@@ -109,13 +109,13 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
                     checked={data.checkIn?.dynamicQR || false}
                     onCheckedChange={(checked) => handleChange('dynamicQR', checked)}
                   />
-                  <Label htmlFor="dynamicQR" className="text-white">
+                  <Label htmlFor="dynamicQR" className="text-foreground">
                     Use dynamic QR codes (changes every few minutes)
                   </Label>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="qrRefreshInterval" className="text-white">
+                  <Label htmlFor="qrRefreshInterval" className="text-foreground">
                     QR Code Refresh Interval (seconds)
                   </Label>
                   <Input
@@ -126,7 +126,7 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
                     placeholder="60"
                     value={data.checkIn?.qrRefreshInterval || ''}
                     onChange={(e) => handleChange('qrRefreshInterval', e.target.value)}
-                    className="glass border-white/30 text-white placeholder:text-white/50"
+                    className="bg-background border-border text-foreground"
                   />
                 </div>
               </div>
@@ -136,7 +136,7 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
               <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="latitude" className="text-white">Latitude</Label>
+                    <Label htmlFor="latitude" className="text-foreground">Latitude</Label>
                     <Input
                       id="latitude"
                       type="number"
@@ -144,11 +144,11 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
                       placeholder="40.7128"
                       value={data.checkIn?.latitude || ''}
                       onChange={(e) => handleChange('latitude', e.target.value)}
-                      className="glass border-white/30 text-white placeholder:text-white/50"
+                      className="bg-background border-border text-foreground"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="longitude" className="text-white">Longitude</Label>
+                    <Label htmlFor="longitude" className="text-foreground">Longitude</Label>
                     <Input
                       id="longitude"
                       type="number"
@@ -156,13 +156,13 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
                       placeholder="-74.0060"
                       value={data.checkIn?.longitude || ''}
                       onChange={(e) => handleChange('longitude', e.target.value)}
-                      className="glass border-white/30 text-white placeholder:text-white/50"
+                      className="bg-background border-border text-foreground"
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="radius" className="text-white">Check-in Radius (meters)</Label>
+                  <Label htmlFor="radius" className="text-foreground">Check-in Radius (meters)</Label>
                   <Input
                     id="radius"
                     type="number"
@@ -171,19 +171,19 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
                     placeholder="50"
                     value={data.checkIn?.radius || ''}
                     onChange={(e) => handleChange('radius', e.target.value)}
-                    className="glass border-white/30 text-white placeholder:text-white/50"
+                    className="bg-background border-border text-foreground"
                   />
                 </div>
               </div>
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="checkInWindow" className="text-white">Check-in Window</Label>
+              <Label htmlFor="checkInWindow" className="text-foreground">Check-in Window</Label>
               <select
                 id="checkInWindow"
                 value={data.checkIn?.window || 'event-duration'}
                 onChange={(e) => handleChange('window', e.target.value)}
-                className="w-full h-10 glass border border-white/30 rounded-md px-3 text-white bg-transparent"
+                className="w-full h-10 bg-background border border-border rounded-md px-3 text-foreground"
               >
                 <option value="1-hour-before">1 hour before event</option>
                 <option value="30-min-before">30 minutes before event</option>
@@ -194,7 +194,7 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="checkInInstructions" className="text-white">
+              <Label htmlFor="checkInInstructions" className="text-foreground">
                 Check-in Instructions for Attendees
               </Label>
               <Textarea
@@ -203,7 +203,7 @@ const CheckInMethodStep: React.FC<CheckInMethodStepProps> = ({ data, updateData 
                 value={data.checkIn?.instructions || ''}
                 onChange={(e) => handleChange('instructions', e.target.value)}
                 rows={3}
-                className="glass border-white/30 text-white placeholder:text-white/50"
+                className="bg-background border-border text-foreground"
               />
             </div>
           </CardContent>

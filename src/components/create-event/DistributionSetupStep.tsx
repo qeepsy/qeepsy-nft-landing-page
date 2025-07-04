@@ -19,16 +19,16 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
   return (
     <div className="space-y-6">
       <div className="text-center space-y-2">
-        <h3 className="text-xl font-semibold text-white">Distribution Setup</h3>
-        <p className="text-white/70">
+        <h3 className="text-xl font-semibold text-foreground">Distribution Setup</h3>
+        <p className="text-muted-foreground">
           Configure how and when attendees will receive their NFTs
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="glass border-white/30">
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-white text-lg">Distribution Method</CardTitle>
+            <CardTitle className="text-foreground text-lg">Distribution Method</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-3">
@@ -40,9 +40,9 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
                   value="auto-mint"
                   checked={data.distribution?.method === 'auto-mint'}
                   onChange={(e) => handleChange('method', e.target.value)}
-                  className="text-purple-400"
+                  className="text-primary"
                 />
-                <Label htmlFor="auto-mint" className="text-white">
+                <Label htmlFor="auto-mint" className="text-foreground">
                   Auto-mint on Check-in
                 </Label>
               </div>
@@ -55,9 +55,9 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
                   value="manual-claim"
                   checked={data.distribution?.method === 'manual-claim'}
                   onChange={(e) => handleChange('method', e.target.value)}
-                  className="text-purple-400"
+                  className="text-primary"
                 />
-                <Label htmlFor="manual-claim" className="text-white">
+                <Label htmlFor="manual-claim" className="text-foreground">
                   Manual Claim by Attendee
                 </Label>
               </div>
@@ -70,9 +70,9 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
                   value="batch-airdrop"
                   checked={data.distribution?.method === 'batch-airdrop'}
                   onChange={(e) => handleChange('method', e.target.value)}
-                  className="text-purple-400"
+                  className="text-primary"
                 />
-                <Label htmlFor="batch-airdrop" className="text-white">
+                <Label htmlFor="batch-airdrop" className="text-foreground">
                   Batch Airdrop After Event
                 </Label>
               </div>
@@ -80,13 +80,13 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
           </CardContent>
         </Card>
 
-        <Card className="glass border-white/30">
+        <Card className="bg-card border-border">
           <CardHeader>
-            <CardTitle className="text-white text-lg">Distribution Timing</CardTitle>
+            <CardTitle className="text-foreground text-lg">Distribution Timing</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="distributionDelay" className="text-white">
+              <Label htmlFor="distributionDelay" className="text-foreground">
                 Delay After Check-in (minutes)
               </Label>
               <Input
@@ -96,9 +96,9 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
                 placeholder="0"
                 value={data.distribution?.delay || ''}
                 onChange={(e) => handleChange('delay', e.target.value)}
-                className="glass border-white/30 text-white placeholder:text-white/50"
+                className="bg-background border-border text-foreground"
               />
-              <p className="text-white/50 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Optional delay before NFT is minted/sent
               </p>
             </div>
@@ -109,7 +109,7 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
                 checked={data.distribution?.requireEventCompletion || false}
                 onCheckedChange={(checked) => handleChange('requireEventCompletion', checked)}
               />
-              <Label htmlFor="requireEventCompletion" className="text-white">
+              <Label htmlFor="requireEventCompletion" className="text-foreground">
                 Wait until event ends
               </Label>
             </div>
@@ -117,14 +117,14 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
         </Card>
       </div>
 
-      <Card className="glass border-white/30">
+      <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-white text-lg">Eligibility Requirements</CardTitle>
+          <CardTitle className="text-foreground text-lg">Eligibility Requirements</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="minAttendanceTime" className="text-white">
+              <Label htmlFor="minAttendanceTime" className="text-foreground">
                 Minimum Attendance Time (minutes)
               </Label>
               <Input
@@ -134,12 +134,12 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
                 placeholder="30"
                 value={data.distribution?.minAttendanceTime || ''}
                 onChange={(e) => handleChange('minAttendanceTime', e.target.value)}
-                className="glass border-white/30 text-white placeholder:text-white/50"
+                className="bg-background border-border text-foreground"
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="maxNFTsPerWallet" className="text-white">
+              <Label htmlFor="maxNFTsPerWallet" className="text-foreground">
                 Max NFTs per Wallet
               </Label>
               <Input
@@ -149,7 +149,7 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
                 placeholder="1"
                 value={data.distribution?.maxNFTsPerWallet || ''}
                 onChange={(e) => handleChange('maxNFTsPerWallet', e.target.value)}
-                className="glass border-white/30 text-white placeholder:text-white/50"
+                className="bg-background border-border text-foreground"
               />
             </div>
           </div>
@@ -160,20 +160,20 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
               checked={data.distribution?.requireWalletConnection || false}
               onCheckedChange={(checked) => handleChange('requireWalletConnection', checked)}
             />
-            <Label htmlFor="requireWalletConnection" className="text-white">
+            <Label htmlFor="requireWalletConnection" className="text-foreground">
               Require wallet connection at registration
             </Label>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="glass border-white/30">
+      <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-white text-lg">Distribution Message</CardTitle>
+          <CardTitle className="text-foreground text-lg">Distribution Message</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="distributionMessage" className="text-white">
+            <Label htmlFor="distributionMessage" className="text-foreground">
               Custom Message to Attendees
             </Label>
             <Textarea
@@ -182,7 +182,7 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
               value={data.distribution?.message || ''}
               onChange={(e) => handleChange('message', e.target.value)}
               rows={3}
-              className="glass border-white/30 text-white placeholder:text-white/50"
+              className="bg-background border-border text-foreground"
             />
           </div>
           
@@ -192,7 +192,7 @@ const DistributionSetupStep: React.FC<DistributionSetupStepProps> = ({ data, upd
               checked={data.distribution?.sendEmailNotification || false}
               onCheckedChange={(checked) => handleChange('sendEmailNotification', checked)}
             />
-            <Label htmlFor="sendEmailNotification" className="text-white">
+            <Label htmlFor="sendEmailNotification" className="text-foreground">
               Send email notification when NFT is distributed
             </Label>
           </div>

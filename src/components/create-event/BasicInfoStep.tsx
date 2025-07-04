@@ -19,23 +19,23 @@ const BasicInfoStep: React.FC<BasicInfoStepProps> = ({ data, updateData }) => {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="eventName" className="text-white">Event Name *</Label>
+          <Label htmlFor="eventName" className="text-foreground">Event Name *</Label>
           <Input
             id="eventName"
             placeholder="Enter event name"
             value={data.basicInfo?.eventName || ''}
             onChange={(e) => handleChange('eventName', e.target.value)}
-            className="glass border-white/30 text-white placeholder:text-white/50"
+            className="bg-background border-border text-foreground"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="eventType" className="text-white">Event Type *</Label>
+          <Label htmlFor="eventType" className="text-foreground">Event Type *</Label>
           <select
             id="eventType"
             value={data.basicInfo?.eventType || ''}
             onChange={(e) => handleChange('eventType', e.target.value)}
-            className="w-full h-10 glass border border-white/30 rounded-md px-3 text-white bg-transparent"
+            className="w-full h-10 bg-background border border-border rounded-md px-3 text-foreground"
           >
             <option value="">Select event type</option>
             <option value="conference">Conference</option>
@@ -48,20 +48,20 @@ const BasicInfoStep: React.FC<BasicInfoStepProps> = ({ data, updateData }) => {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="description" className="text-white">Event Description *</Label>
+        <Label htmlFor="description" className="text-foreground">Event Description *</Label>
         <Textarea
           id="description"
           placeholder="Describe your event"
           value={data.basicInfo?.description || ''}
           onChange={(e) => handleChange('description', e.target.value)}
           rows={4}
-          className="glass border-white/30 text-white placeholder:text-white/50"
+          className="bg-background border-border text-foreground"
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="startDate" className="text-white flex items-center gap-2">
+          <Label htmlFor="startDate" className="text-foreground flex items-center gap-2">
             <Calendar className="w-4 h-4" />
             Start Date *
           </Label>
@@ -70,12 +70,12 @@ const BasicInfoStep: React.FC<BasicInfoStepProps> = ({ data, updateData }) => {
             type="datetime-local"
             value={data.basicInfo?.startDate || ''}
             onChange={(e) => handleChange('startDate', e.target.value)}
-            className="glass border-white/30 text-white"
+            className="bg-background border-border text-foreground"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="endDate" className="text-white flex items-center gap-2">
+          <Label htmlFor="endDate" className="text-foreground flex items-center gap-2">
             <Clock className="w-4 h-4" />
             End Date *
           </Label>
@@ -84,17 +84,17 @@ const BasicInfoStep: React.FC<BasicInfoStepProps> = ({ data, updateData }) => {
             type="datetime-local"
             value={data.basicInfo?.endDate || ''}
             onChange={(e) => handleChange('endDate', e.target.value)}
-            className="glass border-white/30 text-white"
+            className="bg-background border-border text-foreground"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="timezone" className="text-white">Timezone</Label>
+          <Label htmlFor="timezone" className="text-foreground">Timezone</Label>
           <select
             id="timezone"
             value={data.basicInfo?.timezone || 'UTC'}
             onChange={(e) => handleChange('timezone', e.target.value)}
-            className="w-full h-10 glass border border-white/30 rounded-md px-3 text-white bg-transparent"
+            className="w-full h-10 bg-background border border-border rounded-md px-3 text-foreground"
           >
             <option value="UTC">UTC</option>
             <option value="EST">Eastern Time</option>
@@ -106,7 +106,7 @@ const BasicInfoStep: React.FC<BasicInfoStepProps> = ({ data, updateData }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="location" className="text-white flex items-center gap-2">
+          <Label htmlFor="location" className="text-foreground flex items-center gap-2">
             <MapPin className="w-4 h-4" />
             Location
           </Label>
@@ -115,19 +115,19 @@ const BasicInfoStep: React.FC<BasicInfoStepProps> = ({ data, updateData }) => {
             placeholder="Event location or 'Virtual'"
             value={data.basicInfo?.location || ''}
             onChange={(e) => handleChange('location', e.target.value)}
-            className="glass border-white/30 text-white placeholder:text-white/50"
+            className="bg-background border-border text-foreground"
           />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="capacity" className="text-white">Expected Attendance</Label>
+          <Label htmlFor="capacity" className="text-foreground">Expected Attendance</Label>
           <Input
             id="capacity"
             type="number"
             placeholder="Number of attendees"
             value={data.basicInfo?.capacity || ''}
             onChange={(e) => handleChange('capacity', e.target.value)}
-            className="glass border-white/30 text-white placeholder:text-white/50"
+            className="bg-background border-border text-foreground"
           />
         </div>
       </div>
