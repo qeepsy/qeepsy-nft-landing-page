@@ -55,7 +55,7 @@ const CreateEvent = () => {
   const CurrentStepComponent = steps[currentStep].component;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-gold-50 to-silver-100 dark:from-silver-900 dark:to-rose-gold-950 p-4">
+    <div className="min-h-screen bg-background p-4">
       {/* Theme Toggle */}
       <div className="absolute top-4 right-4 z-20">
         <ThemeToggle />
@@ -91,7 +91,7 @@ const CreateEvent = () => {
         </div>
 
         {/* Step Content */}
-        <Card className="glass-strong border-border mb-8">
+        <Card className="bg-card border-border mb-8">
           <CardHeader>
             <CardTitle className="text-foreground text-2xl">
               {steps[currentStep].title}
@@ -111,7 +111,7 @@ const CreateEvent = () => {
             onClick={prevStep}
             disabled={currentStep === 0}
             variant="outline"
-            className="glass text-foreground border-border hover:bg-accent"
+            className="bg-card text-foreground border-border hover:bg-accent"
           >
             <ChevronLeft className="mr-2 h-4 w-4" />
             Previous
