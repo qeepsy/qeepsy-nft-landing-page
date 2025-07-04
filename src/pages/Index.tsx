@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,8 +17,15 @@ import {
   Play,
   ArrowRight,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Calendar,
+  QrCode,
+  Wallet,
+  Award,
+  Globe,
+  Smartphone
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,23 +36,31 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-card/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold gradient-text">Qeepsy</div>
+            <Link to="/" className="text-2xl font-bold gradient-text">Qeepsy</Link>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-foreground/80 hover:text-foreground transition-colors">Features</a>
+              <Link to="/about" className="text-foreground/80 hover:text-foreground transition-colors">About</Link>
+              <Link to="/how-it-works" className="text-foreground/80 hover:text-foreground transition-colors">How It Works</Link>
               <a href="#use-cases" className="text-foreground/80 hover:text-foreground transition-colors">Use Cases</a>
               <a href="#pricing" className="text-foreground/80 hover:text-foreground transition-colors">Pricing</a>
               <a href="#faq" className="text-foreground/80 hover:text-foreground transition-colors">FAQ</a>
               <ThemeToggle />
-              <Button className="gradient-bg text-white hover:opacity-90">
-                Try It Free
-              </Button>
+              <Link to="/login">
+                <Button variant="outline" className="mr-2">
+                  Sign In
+                </Button>
+              </Link>
+              <Link to="/create-event">
+                <Button className="gradient-bg text-white hover:opacity-90">
+                  Create Event
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -63,13 +79,22 @@ const Index = () => {
           {isMenuOpen && (
             <div className="md:hidden mt-4 bg-card rounded-lg p-4 border border-border">
               <div className="flex flex-col space-y-4">
-                <a href="#features" className="text-foreground/80 hover:text-foreground transition-colors">Features</a>
+                <Link to="/about" className="text-foreground/80 hover:text-foreground transition-colors">About</Link>
+                <Link to="/how-it-works" className="text-foreground/80 hover:text-foreground transition-colors">How It Works</Link>
                 <a href="#use-cases" className="text-foreground/80 hover:text-foreground transition-colors">Use Cases</a>
                 <a href="#pricing" className="text-foreground/80 hover:text-foreground transition-colors">Pricing</a>
                 <a href="#faq" className="text-foreground/80 hover:text-foreground transition-colors">FAQ</a>
-                <Button className="gradient-bg text-white hover:opacity-90">
-                  Try It Free
-                </Button>
+                <Separator />
+                <Link to="/login">
+                  <Button variant="outline" className="w-full">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/create-event">
+                  <Button className="w-full gradient-bg text-white hover:opacity-90">
+                    Create Event
+                  </Button>
+                </Link>
               </div>
             </div>
           )}
@@ -81,137 +106,102 @@ const Index = () => {
         <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text animate-float">
-              Turn Your Events Into Web3 Experiences — No Code Needed
+              Turn Your Events Into Web3 Experiences
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               Create stunning Proof of Attendance NFTs for in-person and virtual events in minutes. 
               Let your attendees mint them instantly — no wallet or coding required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-6">
-                Start For Free
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-              <Button size="lg" variant="outline" className="bg-card text-foreground border-border hover:bg-accent text-lg px-8 py-6">
-                <Play className="mr-2" size={20} />
-                See How It Works
-              </Button>
+              <Link to="/create-event">
+                <Button size="lg" className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-6">
+                  Start For Free
+                  <ArrowRight className="ml-2" size={20} />
+                </Button>
+              </Link>
+              <Link to="/how-it-works">
+                <Button size="lg" variant="outline" className="bg-card text-foreground border-border hover:bg-accent text-lg px-8 py-6">
+                  <Play className="mr-2" size={20} />
+                  See How It Works
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problem → Solution Section */}
+      {/* Key Features Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
-            Your Events Deserve to Be Remembered
+            Everything You Need for Event NFTs
           </h2>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-card text-center p-8 border border-border">
-              <CardContent className="pt-6">
-                <div className="text-red-400 text-4xl mb-4">❌</div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">Boring Event Certificates</h3>
-                <p className="text-muted-foreground">PDF certificates that get lost in email folders</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="bg-card border border-border hover:bg-accent/5 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <QrCode className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold text-foreground mb-3">QR Code Check-in</h3>
+                <p className="text-muted-foreground">Instant check-in with QR codes. No apps, no hassle.</p>
               </CardContent>
             </Card>
-            <Card className="bg-card text-center p-8 border border-border">
-              <CardContent className="pt-6">
-                <div className="text-red-400 text-4xl mb-4">❌</div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">Forgotten RSVPs</h3>
-                <p className="text-muted-foreground">No lasting proof of participation or engagement</p>
+            
+            <Card className="bg-card border border-border hover:bg-accent/5 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <Wallet className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold text-foreground mb-3">Wallet-Optional</h3>
+                <p className="text-muted-foreground">Attendees can mint with just an email address.</p>
               </CardContent>
             </Card>
-            <Card className="bg-card text-center p-8 border border-border">
-              <CardContent className="pt-6">
-                <div className="text-red-400 text-4xl mb-4">❌</div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">No Real Proof</h3>
-                <p className="text-muted-foreground">Events that fade from memory without a trace</p>
+            
+            <Card className="bg-card border border-border hover:bg-accent/5 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <Award className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold text-foreground mb-3">Custom NFT Design</h3>
+                <p className="text-muted-foreground">Beautiful, branded NFTs with no coding required.</p>
               </CardContent>
             </Card>
-          </div>
-          <div className="text-center">
-            <Card className="bg-card border border-border p-8 max-w-2xl mx-auto glow-purple">
-              <CardContent className="pt-6">
-                <div className="text-green-400 text-4xl mb-4">✅</div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">With Qeepsy, every event becomes collectible</h3>
-                <p className="text-muted-foreground text-lg">No code. No friction. Just memorable experiences.</p>
+            
+            <Card className="bg-card border border-border hover:bg-accent/5 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <Globe className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold text-foreground mb-3">Global Events</h3>
+                <p className="text-muted-foreground">Perfect for both virtual and in-person events.</p>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-gradient-to-b from-transparent to-purple-900/20">
-        <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
-            What Makes Qeepsy Different?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="text-green-400 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">No-code NFT designer</h3>
-                  <p className="text-muted-foreground">Beautiful, branded NFTs in minutes without technical skills</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="text-green-400 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Instant minting with QR or link</h3>
-                  <p className="text-muted-foreground">Share a QR code or link - attendees mint instantly</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="text-green-400 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Works for physical & virtual events</h3>
-                  <p className="text-muted-foreground">Perfect for conferences, webinars, and online gatherings</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="text-green-400 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Wallet-optional minting</h3>
-                  <p className="text-muted-foreground">Attendees can mint with just an email - no crypto experience needed</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <CheckCircle className="text-green-400 mt-1 flex-shrink-0" size={24} />
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Powered by Sui blockchain</h3>
-                  <p className="text-muted-foreground">Eco-friendly, fast, and gasless transactions</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-card border border-border rounded-2xl p-8 text-center">
-              <div className="text-6xl mb-4">🎨</div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Design Your NFT</h3>
-              <p className="text-muted-foreground mb-6">Drag, drop, customize. Your brand, your style.</p>
-              <Button className="gradient-bg text-white hover:opacity-90">
-                Try Designer
-              </Button>
-            </div>
+            
+            <Card className="bg-card border border-border hover:bg-accent/5 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <Zap className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold text-foreground mb-3">Instant Deployment</h3>
+                <p className="text-muted-foreground">Deploy your event NFTs in under 5 minutes.</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-card border border-border hover:bg-accent/5 transition-all duration-300">
+              <CardContent className="p-8 text-center">
+                <Shield className="w-12 h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-xl font-semibold text-foreground mb-3">Secure & Verified</h3>
+                <p className="text-muted-foreground">Built on Sui blockchain for security and speed.</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* Use Cases Section */}
-      <section id="use-cases" className="py-20 px-4">
+      <section id="use-cases" className="py-20 px-4 bg-gradient-to-b from-transparent to-accent/10">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
-            Perfect For
+            Perfect For Every Event Type
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: "🧑‍💼", title: "Event Organizers", desc: "Conferences, meetups, and networking events" },
-              { icon: "🌐", title: "Webinar Hosts", desc: "Online workshops and educational sessions" },
-              { icon: "🧑‍🏫", title: "Bootcamp Instructors", desc: "Coding bootcamps and training programs" },
-              { icon: "🧑‍💻", title: "Web3 Communities", desc: "DAO events and community gatherings" },
-              { icon: "🎮", title: "Gaming Events", desc: "Tournaments and gaming competitions" },
-              { icon: "📢", title: "Influencer Meetups", desc: "Creator events and fan gatherings" },
+              { icon: "🏢", title: "Corporate Events", desc: "Company meetings, product launches, and training sessions" },
+              { icon: "🎓", title: "Educational", desc: "Workshops, webinars, and certification programs" },
+              { icon: "🚀", title: "Tech Meetups", desc: "Developer conferences, hackathons, and networking events" },
+              { icon: "🎪", title: "Community Events", desc: "Local meetups, festivals, and social gatherings" },
+              { icon: "🎮", title: "Gaming & Esports", desc: "Tournaments, gaming conventions, and streaming events" },
+              { icon: "🎨", title: "Creative Industries", desc: "Art exhibitions, music events, and creative workshops" },
             ].map((useCase, index) => (
               <Card key={index} className="bg-card border border-border hover:bg-accent/5 transition-all duration-300 hover:scale-105 cursor-pointer">
                 <CardContent className="p-8 text-center">
@@ -225,30 +215,64 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-purple-900/20 to-transparent">
+      {/* How It Works Section */}
+      <section className="py-20 px-4">
         <div className="container mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
-            Loved by Organizers and Attendees
+            Simple 3-Step Process
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-orange-300 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-white font-bold text-2xl">1</span>
+              </div>
+              <h3 className="text-2xl font-semibold text-foreground mb-4">Create Your Event</h3>
+              <p className="text-muted-foreground text-lg">Set up your event details and design your custom NFT in minutes</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-300 to-yellow-300 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-white font-bold text-2xl">2</span>
+              </div>
+              <h3 className="text-2xl font-semibold text-foreground mb-4">Share with Attendees</h3>
+              <p className="text-muted-foreground text-lg">Share a simple QR code or link for instant check-in and NFT claiming</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-300 to-green-300 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-white font-bold text-2xl">3</span>
+              </div>
+              <h3 className="text-2xl font-semibold text-foreground mb-4">Watch Them Collect</h3>
+              <p className="text-muted-foreground text-lg">Attendees mint their NFTs instantly - no wallet or crypto knowledge needed</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-accent/10 to-transparent">
+        <div className="container mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
+            Loved by Event Organizers
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                quote: "Qeepsy let us offer our 300+ attendees NFTs in under 5 minutes. No devs needed!",
-                author: "Ada Chen",
-                role: "Tech Event Host",
+                quote: "Qeepsy transformed our conference experience. 500+ attendees got their NFTs in minutes!",
+                author: "Sarah Chen",
+                role: "Tech Conference Organizer",
                 rating: 5
               },
               {
-                quote: "I used Qeepsy to mint my first POAP badge at a webinar. I'm hooked!",
-                author: "David Rodriguez",
-                role: "Student",
+                quote: "The easiest way to add Web3 to our events. Our community loves collecting these NFTs.",
+                author: "Marcus Rodriguez",
+                role: "Community Manager",
                 rating: 5
               },
               {
-                quote: "Finally, a way to reward virtual participants too!",
-                author: "Cynthia Park",
-                role: "Online Educator",
+                quote: "Finally, a solution that doesn't require our attendees to understand crypto!",
+                author: "Emily Park",
+                role: "Corporate Event Planner",
                 rating: 5
               }
             ].map((testimonial, index) => (
@@ -281,7 +305,7 @@ const Index = () => {
             <Card className="bg-card border border-border relative">
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl text-foreground">Starter</CardTitle>
-                <CardDescription className="text-muted-foreground">Perfect for trying out</CardDescription>
+                <CardDescription className="text-muted-foreground">Perfect for small events</CardDescription>
                 <div className="text-4xl font-bold text-foreground mt-4">Free</div>
                 <div className="text-muted-foreground">Forever</div>
               </CardHeader>
@@ -292,20 +316,22 @@ const Index = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={20} />
-                  <span className="text-muted-foreground">100 mints</span>
+                  <span className="text-muted-foreground">100 NFT mints</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={20} />
-                  <span className="text-muted-foreground">NFT Designer</span>
+                  <span className="text-muted-foreground">Basic analytics</span>
                 </div>
-                <Button className="w-full mt-8 bg-accent/10 hover:bg-accent/20 text-foreground">
-                  Get Started
-                </Button>
+                <Link to="/login">
+                  <Button className="w-full mt-8 bg-accent/10 hover:bg-accent/20 text-foreground">
+                    Get Started
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
-            <Card className="bg-card border border-border relative glow-purple border-purple-500/50">
-              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500">
+            <Card className="bg-card border border-border relative border-primary/50 shadow-lg">
+              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 gradient-bg">
                 Most Popular
               </Badge>
               <CardHeader className="text-center">
@@ -331,9 +357,11 @@ const Index = () => {
                   <CheckCircle className="text-green-400" size={20} />
                   <span className="text-muted-foreground">Priority support</span>
                 </div>
-                <Button className="w-full mt-8 gradient-bg text-white hover:opacity-90">
-                  Start Free Trial
-                </Button>
+                <Link to="/login">
+                  <Button className="w-full mt-8 gradient-bg text-white hover:opacity-90">
+                    Start Free Trial
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -347,7 +375,7 @@ const Index = () => {
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={20} />
-                  <span className="text-muted-foreground">Large conferences</span>
+                  <span className="text-muted-foreground">White-label solution</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={20} />
@@ -355,14 +383,14 @@ const Index = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={20} />
-                  <span className="text-muted-foreground">White-label options</span>
+                  <span className="text-muted-foreground">Custom integrations</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={20} />
                   <span className="text-muted-foreground">Dedicated support</span>
                 </div>
                 <Button className="w-full mt-8 bg-accent/10 hover:bg-accent/20 text-foreground">
-                  Talk to Sales
+                  Contact Sales
                 </Button>
               </CardContent>
             </Card>
@@ -371,7 +399,7 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-4 bg-gradient-to-b from-transparent to-purple-900/20">
+      <section id="faq" className="py-20 px-4 bg-gradient-to-b from-transparent to-accent/10">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">
             Frequently Asked Questions
@@ -380,29 +408,33 @@ const Index = () => {
             {[
               {
                 question: "Do attendees need a crypto wallet?",
-                answer: "No, they can mint using email or guest access. We make it as simple as possible for everyone to participate, regardless of their Web3 experience."
+                answer: "No! Attendees can mint NFTs using just their email address. We handle all the blockchain complexity behind the scenes, making it accessible for everyone."
               },
               {
-                question: "What blockchain is this on?",
-                answer: "Sui — fast, carbon-neutral, and gasless. This means transactions are quick, environmentally friendly, and free for your attendees."
+                question: "What blockchain does Qeepsy use?",
+                answer: "We use the Sui blockchain, which is fast, environmentally friendly, and offers gasless transactions for the best user experience."
               },
               {
                 question: "Can I use this for virtual events?",
-                answer: "Yes! Just share the link or QR in Zoom, Discord, Spaces, or any virtual platform. Works perfectly for webinars, online workshops, and virtual conferences."
+                answer: "Absolutely! Share a simple link in your Zoom, Discord, or any virtual platform. Perfect for webinars, online workshops, and virtual conferences."
               },
               {
-                question: "How long does it take to set up?",
-                answer: "Most users create their first NFT in under 5 minutes. Our drag-and-drop designer makes it incredibly easy to customize your event NFTs."
+                question: "How quickly can I set up an event?",
+                answer: "Most users create their first event NFT in under 5 minutes using our intuitive drag-and-drop designer."
               },
               {
-                question: "Is there a limit on attendees?",
-                answer: "Free plan includes 100 mints per month. Pro plan has unlimited NFTs, perfect for large events and conferences."
+                question: "Is there a limit on the number of attendees?",
+                answer: "The free plan includes 100 NFT mints per month. Pro plan offers unlimited mints, perfect for large events and conferences."
+              },
+              {
+                question: "What kind of events work best with Qeepsy?",
+                answer: "Any event where you want to create lasting memories! Conferences, workshops, meetups, hackathons, training sessions, and community gatherings all work great."
               }
             ].map((faq, index) => (
               <Card key={index} className="bg-card border border-border">
                 <CardContent className="p-0">
                   <button
-                    className="w-full p-6 text-left flex items-justify-between"
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-accent/5 transition-colors"
                     onClick={() => toggleFaq(index)}
                   >
                     <span className="text-lg font-semibold text-foreground">{faq.question}</span>
@@ -428,22 +460,26 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-background via-accent/20 to-background">
         <div className="container mx-auto text-center">
-          <Card className="bg-card border border-border max-w-4xl mx-auto glow-purple">
+          <Card className="bg-card border border-border max-w-4xl mx-auto shadow-lg">
             <CardContent className="p-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-                Ready to Give Your Events a Web3 Upgrade?
+                Ready to Transform Your Events?
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Start creating NFTs for your next event — no wallet, no code, no hassle.
+                Join thousands of event organizers who are creating memorable Web3 experiences with Qeepsy.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-6">
-                  Try It Free Now
-                  <Sparkles className="ml-2" size={20} />
-                </Button>
-                <Button size="lg" variant="outline" className="bg-card text-foreground border-border hover:bg-accent text-lg px-8 py-6">
-                  Need help? Talk to us
-                </Button>
+                <Link to="/create-event">
+                  <Button size="lg" className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-6">
+                    Create Your First Event
+                    <Sparkles className="ml-2" size={20} />
+                  </Button>
+                </Link>
+                <Link to="/how-it-works">
+                  <Button size="lg" variant="outline" className="bg-card text-foreground border-border hover:bg-accent text-lg px-8 py-6">
+                    Learn More
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
@@ -453,21 +489,12 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-12 px-4 border-t border-border bg-card">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-8 md:mb-0">
-              <div className="text-2xl font-bold gradient-text mb-2">Qeepsy</div>
-              <p className="text-muted-foreground max-w-sm">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-1">
+              <div className="text-2xl font-bold gradient-text mb-4">Qeepsy</div>
+              <p className="text-muted-foreground mb-4">
                 Transform your events into memorable Web3 experiences with beautiful, no-code NFTs.
               </p>
-            </div>
-            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-              <div className="flex space-x-6">
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Support</a>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Privacy</a>
-              </div>
               <div className="flex space-x-4">
                 <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
                   <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
@@ -486,8 +513,40 @@ const Index = () => {
                 </a>
               </div>
             </div>
+            
+            <div>
+              <h4 className="font-semibold text-foreground mb-4">Product</h4>
+              <div className="space-y-2">
+                <Link to="/how-it-works" className="block text-muted-foreground hover:text-foreground transition-colors">How It Works</Link>
+                <a href="#use-cases" className="block text-muted-foreground hover:text-foreground transition-colors">Use Cases</a>
+                <a href="#pricing" className="block text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+                <Link to="/create-event" className="block text-muted-foreground hover:text-foreground transition-colors">Create Event</Link>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-foreground mb-4">Company</h4>
+              <div className="space-y-2">
+                <Link to="/about" className="block text-muted-foreground hover:text-foreground transition-colors">About</Link>
+                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Careers</a>
+                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-foreground mb-4">Legal</h4>
+              <div className="space-y-2">
+                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a>
+                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Terms of Service</a>
+                <a href="#" className="block text-muted-foreground hover:text-foreground transition-colors">Cookie Policy</a>
+              </div>
+            </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
+          
+          <Separator className="my-8 bg-border" />
+          
+          <div className="text-center text-muted-foreground">
             <p>&copy; 2024 Qeepsy. All rights reserved.</p>
           </div>
         </div>
