@@ -58,8 +58,8 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
   return (
     <div className="space-y-6">
       <div className="text-center space-y-4">
-        <h3 className="text-xl font-semibold text-white">Upload Event Artwork</h3>
-        <p className="text-white/70">
+        <h3 className="text-xl font-semibold text-foreground">Upload Event Artwork</h3>
+        <p className="text-muted-foreground">
           This will be used as the base image for your event NFTs. Choose a high-quality image that represents your event.
         </p>
       </div>
@@ -68,24 +68,24 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
         <div
           className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
             dragActive 
-              ? 'border-purple-400 bg-purple-400/10' 
-              : 'border-white/30 hover:border-white/50'
+              ? 'border-primary bg-primary/10' 
+              : 'border-border hover:border-primary/50'
           }`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
           onDragOver={handleDrag}
           onDrop={handleDrop}
         >
-          <Upload className="mx-auto h-12 w-12 text-white/50 mb-4" />
-          <h4 className="text-lg font-medium text-white mb-2">
+          <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+          <h4 className="text-lg font-medium text-foreground mb-2">
             Drop your image here, or click to browse
           </h4>
-          <p className="text-white/70 mb-4">
+          <p className="text-muted-foreground mb-4">
             PNG, JPG, GIF up to 10MB
           </p>
           <Button
             variant="outline"
-            className="glass text-white border-white/30 hover:bg-white/20"
+            className="glass text-foreground border-border hover:bg-accent"
             onClick={() => document.getElementById('file-upload')?.click()}
           >
             <Image className="mr-2 h-4 w-4" />
@@ -104,16 +104,16 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
           <div className="relative rounded-lg overflow-hidden glass p-4">
             <button
               onClick={removeImage}
-              className="absolute top-2 right-2 p-1 rounded-full bg-red-500 hover:bg-red-600 transition-colors"
+              className="absolute top-2 right-2 p-1 rounded-full bg-destructive hover:bg-destructive/80 transition-colors"
             >
-              <X className="h-4 w-4 text-white" />
+              <X className="h-4 w-4 text-destructive-foreground" />
             </button>
             <img
               src={data.artwork.preview}
               alt="Event artwork"
               className="w-full h-64 object-cover rounded-lg"
             />
-            <p className="text-white/70 mt-2 text-sm">
+            <p className="text-muted-foreground mt-2 text-sm">
               {data.artwork.name}
             </p>
           </div>
@@ -121,7 +121,7 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
           <Button
             variant="outline"
             onClick={removeImage}
-            className="glass text-white border-white/30 hover:bg-white/20 w-full"
+            className="glass text-foreground border-border hover:bg-accent w-full"
           >
             Upload Different Image
           </Button>
@@ -129,12 +129,12 @@ const ArtworkUploadStep: React.FC<ArtworkUploadStepProps> = ({ data, updateData 
       )}
 
       <div className="space-y-4">
-        <Label className="text-white text-lg">Artwork Guidelines</Label>
+        <Label className="text-foreground text-lg">Artwork Guidelines</Label>
         <div className="glass p-4 rounded-lg space-y-2">
-          <p className="text-white/70 text-sm">• Recommended size: 1080x1080px (square format)</p>
-          <p className="text-white/70 text-sm">• High resolution for best NFT quality</p>
-          <p className="text-white/70 text-sm">• Avoid text that might be hard to read when resized</p>
-          <p className="text-white/70 text-sm">• Consider how dynamic elements will overlay on your image</p>
+          <p className="text-muted-foreground text-sm">• Recommended size: 1080x1080px (square format)</p>
+          <p className="text-muted-foreground text-sm">• High resolution for best NFT quality</p>
+          <p className="text-muted-foreground text-sm">• Avoid text that might be hard to read when resized</p>
+          <p className="text-muted-foreground text-sm">• Consider how dynamic elements will overlay on your image</p>
         </div>
       </div>
     </div>

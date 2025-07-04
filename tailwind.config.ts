@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,33 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Rose gold and silver theme colors
+				'rose-gold': {
+					50: '20 14% 97%',
+					100: '24 9% 88%',
+					200: '24 9% 78%',
+					300: '24 9% 68%',
+					400: '17 28% 69%',
+					500: '15 31% 62%',
+					600: '15 25% 55%',
+					700: '15 25% 47%',
+					800: '15 19% 40%',
+					900: '15 13% 34%',
+					950: '15 8% 21%'
+				},
+				'silver': {
+					50: '210 20% 98%',
+					100: '220 14% 96%',
+					200: '220 13% 91%',
+					300: '216 12% 84%',
+					400: '218 11% 65%',
+					500: '220 9% 46%',
+					600: '215 14% 34%',
+					700: '217 19% 27%',
+					800: '215 28% 17%',
+					900: '221 39% 11%',
+					950: '224 71% 5%'
 				}
 			},
 			borderRadius: {

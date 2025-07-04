@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 import BasicInfoStep from "@/components/create-event/BasicInfoStep";
 import ArtworkUploadStep from "@/components/create-event/ArtworkUploadStep";
 import NFTConfigStep from "@/components/create-event/NFTConfigStep";
@@ -54,20 +55,25 @@ const CreateEvent = () => {
   const CurrentStepComponent = steps[currentStep].component;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-rose-900 to-violet-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-rose-gold-50 to-silver-100 dark:from-silver-900 dark:to-rose-gold-950 p-4">
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggle />
+      </div>
+
       <div className="max-w-4xl mx-auto">
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold text-white">Create Your Event</h1>
-            <span className="text-white/70">
+            <h1 className="text-3xl font-bold text-foreground">Create Your Event</h1>
+            <span className="text-muted-foreground">
               Step {currentStep + 1} of {steps.length}
             </span>
           </div>
           
-          <div className="w-full bg-white/20 rounded-full h-2">
+          <div className="w-full bg-muted rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full transition-all duration-300"
+              className="gradient-bg h-2 rounded-full transition-all duration-300"
               style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
             />
           </div>
@@ -76,7 +82,7 @@ const CreateEvent = () => {
             {steps.map((step, index) => (
               <div 
                 key={step.id}
-                className={`text-sm ${index <= currentStep ? 'text-white' : 'text-white/50'}`}
+                className={`text-sm ${index <= currentStep ? 'text-foreground' : 'text-muted-foreground'}`}
               >
                 {step.title}
               </div>
@@ -85,9 +91,9 @@ const CreateEvent = () => {
         </div>
 
         {/* Step Content */}
-        <Card className="glass-strong border-white/30 mb-8">
+        <Card className="glass-strong border-border mb-8">
           <CardHeader>
-            <CardTitle className="text-white text-2xl">
+            <CardTitle className="text-foreground text-2xl">
               {steps[currentStep].title}
             </CardTitle>
           </CardHeader>
@@ -105,7 +111,7 @@ const CreateEvent = () => {
             onClick={prevStep}
             disabled={currentStep === 0}
             variant="outline"
-            className="glass text-white border-white/30 hover:bg-white/20"
+            className="glass text-foreground border-border hover:bg-accent"
           >
             <ChevronLeft className="mr-2 h-4 w-4" />
             Previous
@@ -114,7 +120,7 @@ const CreateEvent = () => {
           <Button
             onClick={nextStep}
             disabled={currentStep === steps.length - 1}
-            className="bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-500 hover:to-pink-500"
+            className="gradient-bg text-white hover:opacity-90"
           >
             Next
             <ChevronRight className="ml-2 h-4 w-4" />
