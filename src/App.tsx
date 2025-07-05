@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +14,10 @@ import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import HowItWorks from "./pages/HowItWorks";
 import NotFound from "./pages/NotFound";
+import AttendeeDashboard from "./pages/attendee/Dashboard";
+import NFTCollection from "./pages/attendee/NFTCollection";
+import EventsBrowse from "./pages/attendee/EventsBrowse";
+import AttendeeProfile from "./pages/attendee/Profile";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +44,12 @@ const App = () => (
           <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
+          
+          {/* Attendee Routes */}
+          <Route path="/attendee/dashboard" element={<AttendeeDashboard />} />
+          <Route path="/attendee/dashboard/nft-collection" element={<NFTCollection />} />
+          <Route path="/attendee/events/browse" element={<EventsBrowse />} />
+          <Route path="/attendee/profile" element={<AttendeeProfile />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
