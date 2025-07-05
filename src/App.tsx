@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +19,10 @@ import AttendeeDashboard from "./pages/attendee/Dashboard";
 import NFTCollection from "./pages/attendee/NFTCollection";
 import EventsBrowse from "./pages/attendee/EventsBrowse";
 import AttendeeProfile from "./pages/attendee/Profile";
+import EventRegister from "./pages/EventRegister";
+import ClaimSuccess from "./pages/ClaimSuccess";
+import MobileScanner from "./pages/MobileScanner";
+import CheckIn from "./pages/attendee/CheckIn";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +49,12 @@ const App = () => (
           <Route path="/create-event" element={<CreateEvent />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
+          
+          {/* Event Registration and Claim Routes */}
+          <Route path="/attend/:eventId/register" element={<EventRegister />} />
+          <Route path="/attend/:eventId/nft-claim/success" element={<ClaimSuccess />} />
+          <Route path="/mobile/attendee/scanner" element={<MobileScanner />} />
+          <Route path="/check-in/:eventId" element={<CheckIn />} />
           
           {/* Attendee Dashboard Routes */}
           <Route path="/attendee/dashboard" element={<AttendeeDashboard />} />
