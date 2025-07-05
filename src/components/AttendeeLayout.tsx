@@ -12,17 +12,17 @@ interface AttendeeLayoutProps {
 export function AttendeeLayout({ children }: AttendeeLayoutProps) {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-background">
+      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <AttendeeSidebar />
         
         <div className="flex-1 flex flex-col">
-          <header className="h-16 border-b bg-card/50 backdrop-blur-sm">
+          <header className="h-16 border-b border-white/10 bg-black/20 backdrop-blur-sm">
             <div className="flex items-center justify-between h-full px-6">
               <div className="flex items-center gap-4">
-                <SidebarTrigger className="hover:bg-muted" />
+                <SidebarTrigger className="hover:bg-white/10 text-white" />
                 <div>
-                  <h1 className="text-xl font-semibold text-foreground">My Events</h1>
-                  <p className="text-sm text-muted-foreground">Manage your NFTs and event attendance</p>
+                  <h1 className="text-xl font-semibold text-white">Qeepsy Events</h1>
+                  <p className="text-sm text-purple-200">Claim and manage your Web3 event NFTs</p>
                 </div>
               </div>
               
@@ -30,7 +30,7 @@ export function AttendeeLayout({ children }: AttendeeLayoutProps) {
                 <ThemeToggle />
                 <Avatar>
                   <AvatarImage src="/placeholder.svg" alt="Profile" />
-                  <AvatarFallback className="bg-gradient-to-br from-rose-400 to-orange-300 text-white">
+                  <AvatarFallback className="bg-gradient-to-br from-purple-500 to-blue-500 text-white">
                     JD
                   </AvatarFallback>
                 </Avatar>
@@ -38,7 +38,7 @@ export function AttendeeLayout({ children }: AttendeeLayoutProps) {
             </div>
           </header>
           
-          <main className="flex-1 p-6 bg-background">
+          <main className="flex-1 p-6 bg-gradient-to-br from-slate-900/50 via-purple-900/20 to-slate-900/50">
             {children}
           </main>
         </div>

@@ -10,7 +10,14 @@ import {
   Wallet,
   Image,
   Heart,
-  Star
+  Star,
+  Trophy,
+  Clock,
+  Shield,
+  Bell,
+  UserCircle,
+  Code,
+  Trash2
 } from "lucide-react";
 import {
   Sidebar,
@@ -27,9 +34,9 @@ import {
 const dashboardItems = [
   { title: "Dashboard", url: "/attendee/dashboard", icon: Activity },
   { title: "Upcoming Events", url: "/attendee/dashboard/upcoming-events", icon: Calendar },
-  { title: "Past Events", url: "/attendee/dashboard/past-events", icon: Calendar },
+  { title: "Past Events", url: "/attendee/dashboard/past-events", icon: Clock },
   { title: "NFT Collection", url: "/attendee/dashboard/nft-collection", icon: Image },
-  { title: "Activity", url: "/attendee/dashboard/activity", icon: Activity },
+  { title: "Activity", url: "/attendee/dashboard/activity", icon: Trophy },
 ];
 
 const eventsItems = [
@@ -45,11 +52,18 @@ const nftItems = [
 
 const profileItems = [
   { title: "Profile", url: "/attendee/profile", icon: User },
+  { title: "Personal Info", url: "/attendee/profile/personal-info", icon: UserCircle },
+  { title: "Tech Stack", url: "/attendee/profile/tech-stack", icon: Code },
   { title: "Wallet Settings", url: "/attendee/profile/wallet-settings", icon: Wallet },
+  { title: "Notifications", url: "/attendee/profile/notification-preferences", icon: Bell },
+  { title: "Privacy", url: "/attendee/profile/privacy-settings", icon: Shield },
 ];
 
 const settingsItems = [
-  { title: "Settings", url: "/attendee/settings", icon: Settings },
+  { title: "Account", url: "/attendee/settings/account", icon: Settings },
+  { title: "Notifications", url: "/attendee/settings/notifications", icon: Bell },
+  { title: "Privacy", url: "/attendee/settings/privacy", icon: Shield },
+  { title: "Delete Account", url: "/attendee/settings/delete-account", icon: Trash2 },
 ];
 
 export function AttendeeSidebar() {
@@ -59,29 +73,29 @@ export function AttendeeSidebar() {
 
   const getNavClassName = (path: string) => {
     const isActive = location.pathname === path;
-    return `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:text-primary ${
+    return `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all ${
       isActive 
-        ? "bg-muted text-primary font-medium" 
-        : "text-muted-foreground hover:bg-muted/50"
+        ? "bg-purple-500/20 text-purple-200 font-medium border border-purple-500/30" 
+        : "text-slate-300 hover:bg-white/10 hover:text-white"
     }`;
   };
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="border-r border-white/10 bg-black/20 backdrop-blur-sm">
       <SidebarContent>
         <div className="p-4">
           <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-br from-rose-400 to-orange-300 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
               <span className="text-white text-sm font-bold">Q</span>
             </div>
             {!isCollapsed && (
-              <span className="font-semibold text-lg gradient-text">Qeepsy</span>
+              <span className="font-semibold text-lg text-white">Qeepsy</span>
             )}
           </div>
         </div>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-purple-300">Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {dashboardItems.map((item) => (
@@ -99,7 +113,7 @@ export function AttendeeSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Events</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-purple-300">Events</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {eventsItems.map((item) => (
@@ -117,7 +131,7 @@ export function AttendeeSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>NFTs</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-purple-300">NFTs</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {nftItems.map((item) => (
@@ -135,7 +149,7 @@ export function AttendeeSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Account</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-purple-300">Profile</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {profileItems.map((item) => (
@@ -153,7 +167,7 @@ export function AttendeeSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Other</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-purple-300">Settings</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {settingsItems.map((item) => (

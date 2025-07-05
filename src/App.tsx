@@ -45,11 +45,35 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           
-          {/* Attendee Routes */}
+          {/* Attendee Dashboard Routes */}
           <Route path="/attendee/dashboard" element={<AttendeeDashboard />} />
+          <Route path="/attendee/dashboard/upcoming-events" element={<AttendeeDashboard />} />
+          <Route path="/attendee/dashboard/past-events" element={<AttendeeDashboard />} />
           <Route path="/attendee/dashboard/nft-collection" element={<NFTCollection />} />
+          <Route path="/attendee/dashboard/activity" element={<AttendeeDashboard />} />
+          
+          {/* Event Routes */}
           <Route path="/attendee/events/browse" element={<EventsBrowse />} />
+          <Route path="/attendee/events/search" element={<EventsBrowse />} />
+          <Route path="/attendee/events/favorites" element={<EventsBrowse />} />
+          <Route path="/attendee/events/recommendations" element={<EventsBrowse />} />
+          
+          {/* NFT Routes */}
+          <Route path="/attendee/nfts/collection" element={<NFTCollection />} />
+          
+          {/* Profile Routes */}
           <Route path="/attendee/profile" element={<AttendeeProfile />} />
+          <Route path="/attendee/profile/personal-info" element={<AttendeeProfile />} />
+          <Route path="/attendee/profile/tech-stack" element={<AttendeeProfile />} />
+          <Route path="/attendee/profile/wallet-settings" element={<AttendeeProfile />} />
+          <Route path="/attendee/profile/notification-preferences" element={<AttendeeProfile />} />
+          <Route path="/attendee/profile/privacy-settings" element={<AttendeeProfile />} />
+          
+          {/* Settings Routes */}
+          <Route path="/attendee/settings/account" element={<AttendeeProfile />} />
+          <Route path="/attendee/settings/notifications" element={<AttendeeProfile />} />
+          <Route path="/attendee/settings/privacy" element={<AttendeeProfile />} />
+          <Route path="/attendee/settings/delete-account" element={<AttendeeProfile />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
