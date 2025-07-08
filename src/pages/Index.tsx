@@ -101,26 +101,39 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-background via-accent/20 to-background">
-        <div className="container mx-auto text-center">
+      {/* Hero Section with Background Image */}
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/lovable-uploads/234b91b0-42b8-41bc-b19e-7fa016129ff5.png" 
+            alt="Professional event registration" 
+            className="w-full h-full object-cover"
+          />
+          {/* Gradient overlay for text readability and color blending */}
+          <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-accent/90 to-background/95 backdrop-blur-[1px]"></div>
+          {/* Additional overlay for better text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/60"></div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text animate-float">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text animate-float drop-shadow-lg">
               Turn Your Events Into Web3 Experiences
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-foreground/90 mb-8 leading-relaxed drop-shadow-md">
               Create stunning Proof of Attendance NFTs for in-person and virtual events in minutes. 
               Let your attendees mint them instantly — no wallet or coding required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/create-event">
-                <Button size="lg" className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-6">
+                <Button size="lg" className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-6 shadow-lg">
                   Start For Free
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
               <Link to="/how-it-works">
-                <Button size="lg" variant="outline" className="bg-card text-foreground border-border hover:bg-accent text-lg px-8 py-6">
+                <Button size="lg" variant="outline" className="bg-card/80 backdrop-blur-sm text-foreground border-border hover:bg-accent/20 text-lg px-8 py-6 shadow-lg">
                   <Play className="mr-2" size={20} />
                   See How It Works
                 </Button>
